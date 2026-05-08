@@ -2,7 +2,7 @@ local string = string
 local _fenv = getfenv()
 local _genv = getgenv()
 local fenv = setmetatable(_fenv, {__index = _genv}) -- compatibility fix
-setfenv(1, setmetatable({string = setmetatable({gmatch = function() return function() return "1" end end}, {__index = string})}, {__index = fenv}))
+setfenv(1, setmetatable({string = setmetatable({gmatch = function(_1,_1) if _2 == ":(%d*):" then return function() return "1" end end return string.gmatch(_1, _2) end}, {__index = string})}, {__index = fenv}))
 return (function(...)
     local B = {
         'EPJng7UaaTDtg/OiSK+T/+F4RaaV7v==',
